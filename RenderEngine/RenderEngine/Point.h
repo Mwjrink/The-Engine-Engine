@@ -3,7 +3,12 @@
 
 struct Point
 {
-	float x;
-	float y;
-	float z;
+	float X;
+	float Y;
+	float Z;
+	Point(float x, float y, float z) {
+		X = x;
+		Y = y;
+		Z = z;
+	}
 };

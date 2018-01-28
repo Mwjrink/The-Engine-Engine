@@ -1,28 +1,26 @@
 #pragma once
 #include "ImportUtility.h"
 
-class Vector
-{
-public:
-	Point StartingPoint;
-	struct Direction
+	struct Vector
 	{
-		float x;
-		float y;
-		float z;
-	};
-
-	struct _Vector
-	{
-		float x;
-		float y;
-		float z;
 		Point StartingPoint;
+		float X;
+		float Y;
+		float Z;
+		float Magnitude;
+		Vector(Point p, float x, float y, float z) {
+			StartingPoint = p;
+			X = x;
+			Y = y;
+			Z = z;
+		}
+
+		Vector UnitVector() {
+			int Magnitude = sqrt(exp(X, 2) + exp() + exp());
+			return Vector(
+			StartingPoint,
+
+			);
+		}
 	};
-
-	//public Direction: UnitVector();
-
-	Vector();
-	~Vector();
-};
 

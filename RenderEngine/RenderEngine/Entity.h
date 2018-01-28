@@ -4,10 +4,19 @@
 class Entity
 {
 private:
-	const int ID;
+	int ID;
+	Point Position;
+	float Width, Length, Height;
+
 public:
 	//Constructor
-	Entity();
+	Entity(int);
+
+	//Getters
+	float GetWidth();
+	float GetLength();
+	float GetHeight();
+	Point GetPosition();
 
 	//Member Function
 	int GetID();

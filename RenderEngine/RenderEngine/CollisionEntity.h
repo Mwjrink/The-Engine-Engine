@@ -1,7 +1,7 @@
 #pragma once
 #include "ImportUtility.h"
 
-class CollisionEntity
+class CollisionEntity : public Entity
 {
 private:
 	vector<int> CollisionIDs;
