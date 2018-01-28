@@ -9,9 +9,10 @@ Main_Thread::Main_Thread(bool run, int width, int height)
 	MainView = new View(width, height);
 
 	//check for fps limit
-
+	ShowCursor(false);
 	while (Run) {
-		//
+		//get cursor change
+		//adjust camera and view
 		//run physics
 		//calculate rays
 		//display to screen
@@ -32,6 +33,7 @@ Main_Thread::Main_Thread(bool run, int width, int height)
 		fclose(fp);*/
 
 	}
+	ShowCursor(true);
 
 }
 

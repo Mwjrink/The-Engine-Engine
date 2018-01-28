@@ -141,7 +141,6 @@
     <ClCompile Include="Main_Thread.cpp" />
     <ClCompile Include="Pixel.cpp" />
     <ClCompile Include="Ray.cpp" />
-    <ClCompile Include="Vector.cpp" />
     <ClCompile Include="View.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="WorldSpace.cpp" />

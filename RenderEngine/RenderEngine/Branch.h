@@ -21,8 +21,8 @@ public:
 	//Member Functions
 	void Add(Entity);
 	void Remove(Entity);
-	void GetCollidableEntities(float, float, float, int[]);
-	void EntityMoved();
+	vector<Entity> GetCollidableEntities(Entity);
+	void EntityMoved(Entity);
 
 
 	//Destructor

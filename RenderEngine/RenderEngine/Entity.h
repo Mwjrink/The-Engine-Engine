@@ -17,9 +17,10 @@ public:
 	float GetLength();
 	float GetHeight();
 	Point GetPosition();
-
+	
 	//Member Function
 	int GetID();
+	bool Equals(Entity entity);
 
 
 	//Destructor

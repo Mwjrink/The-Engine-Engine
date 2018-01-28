@@ -71,10 +71,12 @@ void Branch::Add(Entity entity) {
 					if (en.GetPosition().Y > Position.Y + Width / 2) {
 						//if(en.GetPosition().X + en.GetWidth || )
 						Branches[7].Add(en);
+						Entities.erase(remove(Entities.begin(), Entities.end(), en), Entities.end());
 						continue;
 					}
 					else {
 						Branches[5].Add(en);
+						Entities.erase(remove(Entities.begin(), Entities.end(), en), Entities.end());
 						continue;
 					}
 
@@ -82,10 +84,12 @@ void Branch::Add(Entity entity) {
 				else {
 					if (en.GetPosition().Y > Position.Y + Width / 2) {
 						Branches[3].Add(en);
+						Entities.erase(remove(Entities.begin(), Entities.end(), en), Entities.end());
 						continue;
 					}
 					else {
 						Branches[1].Add(en);
+						Entities.erase(remove(Entities.begin(), Entities.end(), en), Entities.end());
 						continue;
 					}
 
@@ -95,20 +99,24 @@ void Branch::Add(Entity entity) {
 				if (en.GetPosition().Z > Position.Z + Width / 2) {
 					if (en.GetPosition().Y > Position.Y + Width / 2) {
 						Branches[6].Add(en);
+						Entities.erase(remove(Entities.begin(), Entities.end(), en), Entities.end());
 						continue;
 					}
 					else {
 						Branches[4].Add(en);
+						Entities.erase(remove(Entities.begin(), Entities.end(), en), Entities.end());
 						continue;
 					}
 				}
 				else {
 					if (en.GetPosition().Y > Position.Y + Width / 2) {
 						Branches[2].Add(en);
+						Entities.erase(remove(Entities.begin(), Entities.end(), en), Entities.end());
 						continue;
 					}
 					else {
 						Branches[0].Add(en);
+						Entities.erase(remove(Entities.begin(), Entities.end(), en), Entities.end());
 						continue;
 					}
 				}
@@ -117,11 +125,136 @@ void Branch::Add(Entity entity) {
 	}
 }
 
-void Branch::Remove(Entity entity) {
+void Branch::Remove(Entity en) {
+	if (
+		(en.GetPosition.X > Position.X && en.GetPosition.X < Position.X) &&
+		(en.GetPosition.Y > Position.Y && en.GetPosition.Y < Position.Y) &&
+		(en.GetPosition.Z > Position.Z && en.GetPosition.Z < Position.Z)) {
+		//check if in bounds with height and width
+		for (Entity entity : Entities) {
+			if (entity.Equals(en)) {
+				Entities.erase(remove(Entities.begin(), Entities.end(), en), Entities.end());
+				return;
+			}
+		}
+		if (isSplit) {
 
+			if (en.GetPosition().X > Position.X + Width / 2) {
+				if (en.GetPosition().Z > Position.Z + Width / 2) {
+					if (en.GetPosition().Y > Position.Y + Width / 2) {
+						//if(en.GetPosition().X + en.GetWidth || )
+						Branches[7].Remove(en);
+						return;
+					}
+					else {
+						Branches[5].Remove(en);
+						return;
+					}
+
+				}
+				else {
+					if (en.GetPosition().Y > Position.Y + Width / 2) {
+						Branches[3].Remove(en);
+						return;
+					}
+					else {
+						Branches[1].Remove(en);
+						return;
+					}
+				}
+			}
+			else {
+				if (en.GetPosition().Z > Position.Z + Width / 2) {
+					if (en.GetPosition().Y > Position.Y + Width / 2) {
+						Branches[6].Remove(en);
+						return;
+					}
+					else {
+						Branches[4].Remove(en);
+						return;
+					}
+				}
+				else {
+					if (en.GetPosition().Y > Position.Y + Width / 2) {
+						Branches[2].Remove(en);
+						return;
+					}
+					else {
+						Branches[0].Remove(en);
+						return;
+					}
+				}
+			}
+		}
+	}
+	cout << "Exception handling entity(" << en.GetID() << "): \n";
+	throw exception("Tried to remove entity from Branch, but it is not in this branch or its child branches");
 }
 
-void Branch::GetCollidableEntities(float x, float y, float z, int collisionIDs[]) {
+vector<Entity> Branch::GetCollidableEntities(Entity en) {
+	throw exception("The GetCollidableEntities Function does not exist yet rn, GET ON IT MR. DEV MAN");
+	return;
+	if (
+		(en.GetPosition.X > Position.X && en.GetPosition.X < Position.X) &&
+		(en.GetPosition.Y > Position.Y && en.GetPosition.Y < Position.Y) &&
+		(en.GetPosition.Z > Position.Z && en.GetPosition.Z < Position.Z)) {
+		//check if in bounds with height and width
+		for (Entity entity : Entities) {
+			if (entity.Equals(en)) {
+				Entities.erase(remove(Entities.begin(), Entities.end(), en), Entities.end());
+				return;
+			}
+		}
+		if (isSplit) {
+
+			if (en.GetPosition().X > Position.X + Width / 2) {
+				if (en.GetPosition().Z > Position.Z + Width / 2) {
+					if (en.GetPosition().Y > Position.Y + Width / 2) {
+						//if(en.GetPosition().X + en.GetWidth || )
+						Branches[7].Remove(en);
+						return;
+					}
+					else {
+						Branches[5].Remove(en);
+						return;
+					}
+
+				}
+				else {
+					if (en.GetPosition().Y > Position.Y + Width / 2) {
+						Branches[3].Remove(en);
+						return;
+					}
+					else {
+						Branches[1].Remove(en);
+						return;
+					}
+				}
+			}
+			else {
+				if (en.GetPosition().Z > Position.Z + Width / 2) {
+					if (en.GetPosition().Y > Position.Y + Width / 2) {
+						Branches[6].Remove(en);
+						return;
+					}
+					else {
+						Branches[4].Remove(en);
+						return;
+					}
+				}
+				else {
+					if (en.GetPosition().Y > Position.Y + Width / 2) {
+						Branches[2].Remove(en);
+						return;
+					}
+					else {
+						Branches[0].Remove(en);
+						return;
+					}
+				}
+			}
+		}
+	}
 	//TODO
 	//check against entities in this Branch
 	if (isSplit) {
@@ -129,7 +262,7 @@ void Branch::GetCollidableEntities(float x, float y, float z, int collisionIDs[]
 	}
 }
 
-void Branch::EntityMoved() {
+void Branch::EntityMoved(Entity entity) {
 	//TODO: this Function
 
 	//check for leaving current branch, pass up a branch
@@ -139,4 +272,5 @@ void Branch::EntityMoved() {
 
 Branch::~Branch()
 {
+
 }

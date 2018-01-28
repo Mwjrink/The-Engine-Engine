@@ -26,6 +26,11 @@ int Entity::GetID() {
 	return ID;
 }
 
+bool Entity::Equals(Entity entity) {
+	return ID == entity.GetID();
+}
+
+
 //Destructor
 Entity::~Entity()
 {
